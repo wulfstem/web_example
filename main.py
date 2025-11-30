@@ -23,7 +23,7 @@ class MyRequestHandler(BaseHTTPRequestHandler):
         y = params.get("y", [None])[0]
 
         if x is None or y is None or not x.isdigit() or not y.isdigit():
-            self.send_plain("Nan")
+            self.send_plain("NaN")
             return
         
         x = int(x)
