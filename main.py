@@ -1,6 +1,9 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
 from math import gcd
+import os
+
+PORT = int(os.getenv("PORT", 8080))
 
 class MyRequestHandler(BaseHTTPRequestHandler):
 
@@ -35,7 +38,7 @@ class MyRequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(text.encode())
 
 def main():
-    server_address = ('', 8080)
+    server_address = ('', PORT)
     httpd = HTTPServer(server_address, MyRequestHandler)
     print('Starting server...')
     httpd.serve_forever()
